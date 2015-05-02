@@ -1,4 +1,5 @@
 import java.awt.*;
+import java.awt.event.*;
 import javax.swing.*;
 
 public class PickFourCards extends JFrame {
@@ -9,8 +10,8 @@ public class PickFourCards extends JFrame {
 		
 		//Create panel p2 to put the refresh button
 		JPanel p2 = new JPanel();
-		p2.setLayout(new GridLayout(1, 1));
-		p2.add(new JButton("Refresh"));
+		JButton refresh = new JButton("Refresh");
+		p2.add(refresh,new FlowLayout(FlowLayout.CENTER));
 		
 		//Add contents to the frame
 		add(p1, BorderLayout.NORTH);
