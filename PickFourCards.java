@@ -9,9 +9,12 @@ public class PickFourCards extends JFrame {
 	//Create a label to put icons
 	JLabel[] jlbl = new JLabel[4];
 	
+	//Create a button
+	JButton refresh = new JButton("Refresh");
+	
 	public PickFourCards() {
 		//Create an image icon from an card file
-		for(int k = 0; k < 52; k++){
+		for(int k = 0; k < 52; k++) {
 			cards[k] = new ImageIcon("card/"+(k+1)+".png");
 		}
 		
@@ -36,13 +39,35 @@ public class PickFourCards extends JFrame {
 		
 		//Create panel p2 to put the refresh button
 		JPanel p2 = new JPanel();
-		JButton refresh = new JButton("Refresh");
 		p2.add(refresh,new FlowLayout(FlowLayout.CENTER));
-		
+	
 		//Add contents to the frame
 		add(p1, BorderLayout.NORTH);
 		add(p2, BorderLayout.SOUTH);
 		
+		refresh.addActionListener(new ButtonRefresh());
+	}
+	
+	
+	private class ButtonRefresh implements ActionListener {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			if(e.getSource() == refresh){
+				// Shuffle the cards
+				for(int i = 0; i<cards.length; i++) {
+					//Generate an index randomly
+					int index = (int)(Math.random()*cards.length);
+					ImageIcon temp = cards[i];
+					cards[i] = cards[index];
+					cards[index] = temp;
+				}
+				
+				//display the icon
+				for(int j = 0; j < 4; j++) {
+					jlbl[j].setIcon(cards[j]);
+				}
+			}
+		}
 	}
 	
 	/**Main Method*/
