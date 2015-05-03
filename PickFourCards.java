@@ -16,12 +16,12 @@ public class PickFourCards extends JFrame {
 		}
 		
 		// Shuffle the cards
-		for (int i = 0; i < deck.length; i++) {
+		for (int i = 0; i < cards.length; i++) {
 			// Generate an index randomly
-			int index = (int)(Math.random() * deck.length);
-			int temp = deck[i];
-			deck[i] = deck[index]; 
-			deck[index] = temp;
+			int index = (int)(Math.random() * cards.length);
+			ImageIcon temp = cards[i];
+			cards[i] = cards[index]; 
+			cards[index] = temp;
 		}
 		
 		//Create panel p1 to display the four cards
