@@ -3,7 +3,24 @@ import java.awt.event.*;
 import javax.swing.*;
 
 public class PickFourCards extends JFrame {
+	//Create an array to store the 52 cards
+	private ImageIcon[] cards = new ImageIcon[52];
+	
 	public PickFourCards() {
+		//Create an image icon from an card file
+		for(int k = 0; k < 52; k++){
+			cards[k] = new ImageIcon("card/"+(k+1)+".png");
+		}
+		
+		// Shuffle the cards
+		for (int i = 0; i < deck.length; i++) {
+			// Generate an index randomly
+			int index = (int)(Math.random() * deck.length);
+			int temp = deck[i];
+			deck[i] = deck[index]; 
+			deck[index] = temp;
+		}
+		
 		//Create panel p1 to display the four cards
 		JPanel p1 = new JPanel();
 		p1.setLayout(new GridLayout(1, 4));
