@@ -6,6 +6,9 @@ public class PickFourCards extends JFrame {
 	//Create an array to store the 52 cards
 	private ImageIcon[] cards = new ImageIcon[52];
 	
+	//Create a label to put icons
+	JLabel[] jlbl = new JLabel[4];
+	
 	public PickFourCards() {
 		//Create an image icon from an card file
 		for(int k = 0; k < 52; k++){
@@ -24,6 +27,12 @@ public class PickFourCards extends JFrame {
 		//Create panel p1 to display the four cards
 		JPanel p1 = new JPanel();
 		p1.setLayout(new GridLayout(1, 4));
+		
+		//display the icon
+		for(int i = 0; i < 4; i++){
+			jlbl[i] = new JLabel(cards[i]);
+			p1.add(jlbl[i]);
+		}
 		
 		//Create panel p2 to put the refresh button
 		JPanel p2 = new JPanel();
